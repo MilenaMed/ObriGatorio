@@ -11,12 +11,12 @@ export default function HomePage() {
     const token = localStorage.getItem("token");
     const config = { headers: { Authorization: `Bearer ${token}` } };
     const navigate = useNavigate();
-    
+
     useEffect(() => {
         if (!token) {
             alert("É necessário estar logado para prosseguir");
             navigate("/");
-            return; // Return early if there's no token
+            return;
         }
     })
 

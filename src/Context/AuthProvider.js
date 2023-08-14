@@ -4,7 +4,7 @@ import { AuthContext } from "./AuthContext.js";
 
 export  default function AuthProvider({ children }) {
     const saveToken = (data) => {
-      localStorage.setItem("token-access", data.token);
+      localStorage.setItem("token", data.token);
     };
   
     return (

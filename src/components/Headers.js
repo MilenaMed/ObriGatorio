@@ -12,6 +12,7 @@ function Header() {
     }
     function Logout(event) {
         event.preventDefault()
+        localStorage.removeItem("token");
         navigate('/')
     }
 
@@ -19,7 +20,7 @@ function Header() {
         <>
             <StyledLogoContainer>
                 <StyledLogo src={logoObrugatorio} onClick={getHome} />
-                <StyledIcon src={logoutIcon} onClick={Logout}/>
+                <StyledIcon src={logoutIcon} onClick={Logout} />
             </StyledLogoContainer>
         </>
     )
