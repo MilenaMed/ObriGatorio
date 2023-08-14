@@ -14,26 +14,65 @@ export default function MyCatsPage() {
             .then((res) => setMyCats(res.data))
             .catch((err) => console.log(err.response.data));
     }, []);
+    useEffect(() => {
+        fetchMyCats();
+    }, []);
+
+    const fetchMyCats = async () => {
+        try {
+            const response = await api.get("/my-cats");
+            setMyCats(response.data);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    if (myCats.length === 0) {
+        return (
+            <>
+                <Header />
+                <ConteinerCatsPage>
+                    <h3>Você ainda não cadastrou nenhum gato</h3>
+                </ConteinerCatsPage >
+            </>)
+    }
+
+    const changeCatStatus = async (catId) => {
+        try {
+            await api.post(`/myCats/${catId}`);
+            fetchMyCats();
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
     return (
         <>
             <Header />
-            <ConteinerHome>
+            <ConteinerCatsPage>
                 {myCats.map(cat => (
                     <ProdutoDiv key={cat.catName}>
                         <img src={cat.photo} alt={cat.catName} />
                         <CatInfo>
                             <p>{cat.catName}</p>
                             <h1>{cat.datadescription}</h1>
-                            <h2> contato da ong: {cat.ongContact}</h2>
+                            <ConteinerDados>
+                                <h2> contato da ong: {cat.ongContact}</h2>
+                                {cat.available ? (
+                                    <Avaliblebutton onClick={() => changeCatStatus(cat.id)}>Disponível</Avaliblebutton>
+                                ) : (
+                                    <Avaliblebutton onClick={() => changeCatStatus(cat.id)}>Indisponível</Avaliblebutton>
+                                )}
+                            </ConteinerDados>
                         </CatInfo>
                     </ProdutoDiv>
                 ))}
-            </ConteinerHome >
+            </ConteinerCatsPage >
         </>
     )
 }
 
-const ConteinerHome = styled.div`
+const ConteinerCatsPage = styled.div`
 margin-top:60px;
 height: 100vh;
     display: flex;
@@ -41,10 +80,18 @@ height: 100vh;
    justify-content: center;
    align-items: center;
 background-color: #fee1e8;
+h3{
+    margin-top: 100px;
+    font-family: 'Raleway';
+}
 `
+const ConteinerDados = styled.div`
+display:flex;
+justify-content: space-between;
+align-items: center;`
 
 const ProdutoDiv = styled.div`
-height: 150px;
+height: 170px;
 width:70%;
 background-color: white;
 margin-bottom: 20px;
@@ -62,6 +109,21 @@ img{
   position: relative;
   left: -20px;
 }
+`
+
+const Avaliblebutton = styled.button`
+outline: none;
+        border: none;
+        border-radius: 5px;
+        background-color: #ffb6b6;
+        color: #ffffff;
+        font-size: 12px;
+        cursor: pointer;
+        width:120px;
+        padding: 12px;
+        margin-right:20px;
+        margin-bottom:20px;
+
 `
 const CatInfo = styled.div`
   flex: 1;

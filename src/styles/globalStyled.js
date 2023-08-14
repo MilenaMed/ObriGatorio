@@ -27,12 +27,13 @@ const GlobalStyle = createGlobalStyle`
         color: #a9a9a9;
     }
     input {
-        font-size: 20px;
-        width: calc(100% - 30px);
+        font-size: 18px;
+        height:20px;
+        width: calc(100% - 20px);
         border-radius: 5px;
         outline: none;
         border: 1px solid #ccc;
-        padding: 15px;
+        padding: 10px;
         margin: 1px;
         :focus {
             border: 2px solid #ffb6b6;

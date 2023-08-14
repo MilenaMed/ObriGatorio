@@ -3,7 +3,8 @@ import logoObrugatorio from "../images/Logo.png"
 import { useNavigate } from "react-router-dom"
 import { useContext, useState } from "react"
 import { api } from "../config/ApiConfig.jsx"
-import { AuthContext } from "../Context/AuthContext.js"
+import { AuthContext } from "../Context/AuthContext.js";
+
 
 export default function SignInPage() {
     const { saveToken } = useContext(AuthContext);
