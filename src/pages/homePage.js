@@ -4,17 +4,28 @@ import { api } from "../config/ApiConfig.jsx"
 import Header from "../components/Headers.js"
 import { useEffect } from "react"
 import Footer from "../components/Footer.js"
+import { useNavigate } from "react-router-dom"
 
 export default function HomePage() {
     const [cats, setCats] = useState([]);
     const token = localStorage.getItem("token");
     const config = { headers: { Authorization: `Bearer ${token}` } };
+    const navigate = useNavigate();
+    
+    useEffect(() => {
+        if (!token) {
+            alert("É necessário estar logado para prosseguir");
+            navigate("/");
+            return; // Return early if there's no token
+        }
+    })
 
     useEffect(() => {
         const promisse = api.get("/home", config)
             .then((res) => setCats(res.data))
             .catch((err) => console.log(err.response.data));
     }, []);
+
     return (
         <>
             <Header />

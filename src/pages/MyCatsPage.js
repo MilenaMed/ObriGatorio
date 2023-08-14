@@ -2,12 +2,22 @@ import { useState, useEffect } from "react";
 import { api } from "../config/ApiConfig";
 import Header from "../components/Headers";
 import styled from "styled-components"
+import { useNavigate } from "react-router-dom";
 
 
 export default function MyCatsPage() {
     const [myCats, setMyCats] = useState([]);
-    const token = localStorage.getItem("token-access");
+    const token = localStorage.getItem("token");
     const config = { headers: { Authorization: `Bearer ${token}` } };
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (!token) {
+            alert("É necessário estar logado para prosseguir");
+            navigate("/");
+            return;
+        }
+    })
 
     useEffect(() => {
         const promisse = api.get("/myCats", config)
