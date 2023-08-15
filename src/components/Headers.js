@@ -38,6 +38,7 @@ const StyledLogoContainer = styled.div`
     justify-content: space-between;
     align-items: center;
     position: fixed;
+    z-index: 1000;
     top: 0;
 
     `;

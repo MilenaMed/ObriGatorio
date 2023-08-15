@@ -19,23 +19,19 @@ export default function MyCatsPage() {
         }
     })
 
-    useEffect(() => {
-        const promisse = api.get("/myCats", config)
-            .then((res) => setMyCats(res.data))
-            .catch((err) => console.log(err.response.data));
-    }, []);
-    useEffect(() => {
-        fetchMyCats();
-    }, []);
-
     const fetchMyCats = async () => {
         try {
-            const response = await api.get("/my-cats");
-            setMyCats(response.data);
+            const promisse = api.get("/myCats", config)
+                .then((res) => setMyCats(res.data))
         } catch (error) {
             console.log(error);
         }
     };
+
+    useEffect(() => {
+        fetchMyCats();
+    }, []);
+
 
     if (myCats.length === 0) {
         return (
@@ -49,8 +45,8 @@ export default function MyCatsPage() {
 
     const changeCatStatus = async (catId) => {
         try {
-            await api.post(`/myCats/${catId}`);
-            fetchMyCats();
+            const updatedCat = await api.post(`/myCats/${catId}`, config);
+            setMyCats(prevCats => prevCats.map(cat => cat.id === catId ? updatedCat.data : cat));
         } catch (error) {
             console.log(error);
         }
@@ -85,15 +81,12 @@ export default function MyCatsPage() {
 const ConteinerCatsPage = styled.div`
 margin-top:60px;
 height: 100vh;
+margin-top:80px;
     display: flex;
     flex-direction: column;
    justify-content: center;
    align-items: center;
 background-color: #fee1e8;
-h3{
-    margin-top: 100px;
-    font-family: 'Raleway';
-}
 `
 const ConteinerDados = styled.div`
 display:flex;
@@ -138,6 +131,7 @@ outline: none;
 const CatInfo = styled.div`
   flex: 1;
   p{
+    margin-top:20px;
     font-size: 24px;
     font-weight: 700;
     color: #a9a9a9;
