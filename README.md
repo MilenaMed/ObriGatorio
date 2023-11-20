@@ -1,5 +1,5 @@
 # Top News
-Aplicação front-end para visualização do projeto back-end. Nesta aplicação, é possível gerenciar o back-end de um pequeno site de contratação de serviços através de requisições HTTP(s).
+Aplicação front-end para visualização do projeto back-end onde é possível gerenciar um site de contratação de serviços através de requisições HTTP(s).
 
 ![image](https://github.com/MilenaMed/obriGatorio/assets/115955806/55681150-9699-4ec0-9a73-1fba61c6c975)
 
