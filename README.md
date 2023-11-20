@@ -1,70 +1,30 @@
-# Getting Started with Create React App
+# Top News
+Aplicação front-end para visualização do projeto back-end. Nesta aplicação, é possível gerenciar o back-end de um pequeno site de contratação de serviços através de requisições HTTP(s).
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![image](https://github.com/MilenaMed/obriGatorio/assets/115955806/55681150-9699-4ec0-9a73-1fba61c6c975)
 
-## Available Scripts
+# Demo
+[Link do projeto](https://obrigatorio.vercel.app)
 
-In the project directory, you can run:
+Para entidade, foram criadas cinco paginas:
 
-### `npm start`
+- "/": Retorna a página de login, para que se possa acessar o site. Em caso de erro retorna: "Preencha os dados corretamente".
+- "/signup": Retorna a página de cadastro, onde é possivel registrar um novo usuário.  Em caso de erro retorna: "Os dados estão incorretos!". Caso o usuário não preencha corretamente (ex: e-mail em formato inválido), retorna: "erro: preencha os dados corretamente"
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+  As seguintes paginas só podem ser acessadas caso o login tenha sido realizado, em caso de erro, retorna: "É necessário estar logado para prosseguir".
+  
+- "/home": Pode ser acessado pelo link, ou ao clicar na logo presente no cabeçalho. Mostra todos os gatos cadastrados e disponíveis para prestar serviço, assim como o telefone para contato.
+- "/AddCat": Página para inserir os dados do gato, que pode ser acessada pela url, ou ao clicar no icon do gato na home: nome, descrição e foto. Em caso de dados preenchidos errados (ex: url da foto inválida), retorna: "Preencha os dados corretamente". Em caso de sucesso, o usuário é redirecionado para /home onde o novo gato já aparece.
+- "/mycats": Aparecem apenas os gatos cadastrados pelo usuário. Caso não tenha nenhum gato cadastrado pelo usuário, aparece apenas "Você ainda não cadastrou nenhum gato".
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+# Tecnologias utilizadas
+Para este projeto, foram utilizadas:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Node (versão 18.17.0);
+- Cors;
+- React;
+- Styled-components;
+- Axios;
+- Redis;
+- Joi;
